@@ -2,9 +2,8 @@ import requests
 from datetime import datetime
 
 # <PIXELA_ENDPOINT>/<username>/graphs/<graphID>.html
-
 USER = "paulina"
-TOKEN = "jwdcnwdcjw3cw"
+TOKEN = "************"
 GRAPH_ID = "graph1"
 
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
@@ -34,11 +33,22 @@ headers = {
 # response = requests.post(url=GRAPH_ENDPOINT, json=graph_params, headers=headers)
 # print(response.text)
 
-today = datetime(2023, 4, 25)
+today = datetime.now()
 
 graph_id_params = {
     "date": today.strftime("%Y%m%d"),
-    "quantity": "10",
+    "quantity": input("How many pages did you read today? "),
 }
 # response = requests.post(url=GRAPH_ID_ENDPOINT, json=graph_id_params, headers=headers)
+# print(response.text)
+
+update_endpoint = f"{GRAPH_ID_ENDPOINT}/{today.strftime('%Y%m%d')}"
+update_graph = {
+    "quantity": "9",
+}
+# response = requests.put(url=update_endpoint, json=update_graph, headers=headers)
+# print(response.text)
+
+delete_endpoint = f"{GRAPH_ID_ENDPOINT}/{today.strftime('%Y%m%d')}"
+# response = requests.delete(url=delete_endpoint, headers=headers)
 # print(response.text)
