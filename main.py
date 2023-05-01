@@ -1,6 +1,8 @@
 import requests
 from datetime import datetime
 
+# <PIXELA_ENDPOINT>/<username>/graphs/<graphID>.html
+
 USER = "paulina"
 TOKEN = "jwdcnwdcjw3cw"
 GRAPH_ID = "graph1"
@@ -32,9 +34,11 @@ headers = {
 # response = requests.post(url=GRAPH_ENDPOINT, json=graph_params, headers=headers)
 # print(response.text)
 
+today = datetime(2023, 4, 25)
+
 graph_id_params = {
-    "date": "20230501",
-    "quantity": "2",
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "10",
 }
-response = requests.post(url=GRAPH_ID_ENDPOINT, json=graph_id_params, headers=headers)
-print(response.text)
+# response = requests.post(url=GRAPH_ID_ENDPOINT, json=graph_id_params, headers=headers)
+# print(response.text)
